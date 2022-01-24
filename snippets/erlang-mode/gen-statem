@@ -1,0 +1,67 @@
+# -*- mode: snippet -*-
+# name: gen-statem
+# key: genstatem
+# --
+-module($0).
+
+-behaviour(gen_statem).
+
+-include_lib("kernel/include/logger.hrl").
+
+%% Supervisor API
+-export([start_link/0, name/0]).
+
+%% Public API
+-export([]).
+
+%% gen_statem callbacks
+-export([init/1, callback_mode/0]).
+
+%% states/callbacks
+-export([]).
+
+-type state() :: todo.
+-type data() :: todo.
+
+%%==============================================================================================
+%% Supervisor API
+%%==============================================================================================
+
+-spec start_link() -> gen_statem:start_ret().
+start_link() -> gen_statem:start_link({local, name()}, name(), [], []).
+
+-spec name() -> atom().
+name() -> ?MODULE.
+
+%%==============================================================================================
+%% Public API
+%%==============================================================================================
+
+
+%%==============================================================================================
+%% gen_statem callbacks
+%%==============================================================================================
+
+-spec init(term()) -> {ok, state(), data()}.
+init(_) -> {ok, todo, todo}.
+
+-spec callback_mode() -> [state_functions | state_enter].
+callback_mode() -> [state_functions, state_enter].
+
+%%==============================================================================================
+%% states/callbacks
+%%==============================================================================================
+
+
+%%==============================================================================================
+%% Internal functions
+%%==============================================================================================
+
+
+%% Local variables:
+%% mode: erlang
+%% erlang-indent-level: 2
+%% indent-tabs-mode: nil
+%% fill-column: 96
+%% coding: utf-8
+%% End:

@@ -1,0 +1,42 @@
+# -*- mode: snippet -*-
+# name: tqbtestmodule
+# key: tqbtestmodule
+# --
+-module($0).
+
+-include("assert.hrl").
+
+%% CT callbacks
+-export([all/0, groups/0, init_per_suite/1, end_per_suite/1]).
+
+%% Tests
+-export([]).
+
+-spec all() -> [any()].
+all() -> [{group, g_all}].
+
+-spec groups() -> [any()].
+groups() -> [{g_all, [{group, g_par}]}, tqb_test:par_groups([])].
+
+%%==============================================================================================
+%% Tests
+%%==============================================================================================
+
+
+%%==============================================================================================
+%% CT callbacks
+%%==============================================================================================
+
+-spec init_per_suite(Config) -> Config.
+init_per_suite(Config) -> tqb_test:init_per_suite(Config).
+
+-spec end_per_suite(Config :: any()) -> ok.
+end_per_suite(Config) -> tqb_test:end_per_suite(Config).
+
+%% Local variables:
+%% mode: erlang
+%% erlang-indent-level: 2
+%% indent-tabs-mode: nil
+%% fill-column: 96
+%% coding: utf-8
+%% End:

@@ -1,0 +1,71 @@
+# -*- mode: snippet -*-
+# name: gen-server
+# key: genserver
+# --
+-module($0).
+
+-behaviour(gen_server).
+
+-include_lib("kernel/include/logger.hrl").
+
+%% Public API
+-export([]).
+
+%% Supervisor API
+-export([start_link/0, name/0]).
+
+%% gen_server callbacks
+-export([init/1, handle_cast/2, handle_call/3, handle_info/2, terminate/2]).
+
+-record( state
+       , {}
+       ).
+
+-type state() :: #state{}.
+
+%%==============================================================================================
+%% Public API
+%%==============================================================================================
+
+
+%%==============================================================================================
+%% Supervisor API
+%%==============================================================================================
+
+-spec start_link() -> {ok, pid()}.
+start_link() -> gen_server:start_link({local, name()}, name(), [], []).
+
+-spec name() -> atom().
+name() -> ?MODULE.
+
+%%==============================================================================================
+%% gen_server callbacks
+%%==============================================================================================
+
+-spec init(term()) -> {ok, state()}.
+init(_) -> {ok, #state{}}.
+
+-spec handle_call(term(), term(), state()) -> {reply, term(), state()}.
+handle_call(_, _, State) -> {reply, ok, State}.
+
+-spec handle_cast(term(), state()) -> {noreply, state()}.
+handle_cast(_, State) -> {noreply, State}.
+
+-spec handle_info(term(), state()) -> {noreply, state()}.
+handle_info(_, State) -> {noreply, State}.
+
+-spec terminate(term(), state()) -> ok.
+terminate(_, _) -> ok.
+
+%%==============================================================================================
+%% Internal functions
+%%==============================================================================================
+
+
+%% Local variables:
+%% mode: erlang
+%% erlang-indent-level: 2
+%% indent-tabs-mode: nil
+%% fill-column: 96
+%% coding: utf-8
+%% End:

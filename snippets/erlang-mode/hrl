@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: New HRL structure
+# key: hrl
+# --
+%% -*- mode: erlang -*-
+-ifndef(_$1_HRL).
+
+-define(_$1_HRL, 1).
+
+$0
+
+-endif.

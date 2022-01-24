@@ -1,0 +1,54 @@
+# -*- mode: snippet -*-
+# name: Create supervisor module
+# key: sup
+# --
+-module($1).
+
+-behaviour(supervisor).
+
+%% API
+-export([start_link/0]).
+
+%% Supervisor callbacks
+-export([init/1]).
+
+-define(SERVER, ?MODULE).
+
+%%==============================================================================================
+%% API
+%%==============================================================================================
+
+-spec start_link() -> tql:either(pid(), term()).
+start_link() -> supervisor:start_link({local, ?SERVER}, ?MODULE, []).
+
+%%==============================================================================================
+%% Supervisor callbacks
+%%==============================================================================================
+
+-spec init([]) -> {ok, {SupFlags, [ChildSpec]}} | ignore when
+    SupFlags :: supervisor:sup_flags(),
+    ChildSpec :: supervisor:child_spec().
+init([]) ->
+  { ok
+  , { #{strategy => one_for_one, intensity => 1, period => 5}
+    , [#{ id => $2:name()
+        , type => worker
+        , start => {$2, start_link, []}
+        , restart => permanent
+        , shutdown => 5000
+        , modules => [$2]
+        }$0]
+    }
+  }.
+
+%%==============================================================================================
+%% Internal functions
+%%==============================================================================================
+
+%% Local variables:
+%% mode: erlang
+%% erlang-indent-level: 2
+%% indent-tabs-mode: nil
+%% fill-column: 96
+%% coding: utf-8
+%% End:

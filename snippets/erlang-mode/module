@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: Create empty erlang module
+# key: erlmod
+# --
+-module($0).
+
+%% API
+-export([]).
+
+%%==============================================================================================
+%% API
+%%==============================================================================================
+
+
+%% Local variables:
+%% mode: erlang
+%% erlang-indent-level: 2
+%% indent-tabs-mode: nil
+%% fill-column: 96
+%% coding: utf-8
+%% End:

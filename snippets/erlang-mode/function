@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: function
+# key: function
+# --
+-spec $1($2) -> $3.
+$1($4) -> $0.
