@@ -10,6 +10,7 @@
 ;;(package! some-package)
 (package! dhall-mode)
 (package! hcl-mode)
+(package! jenkinsfile-mode)
 (package! reformatter)
 (package! discover-my-major)
 (package! string-inflection)
