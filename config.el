@@ -74,6 +74,10 @@
 (after! dhall-mode
   (setq dhall-use-header-line nil))
 
+;; Stop inserting a magic #coding comment
+(after! ruby-mode
+  (setq ruby-insert-encoding-magic-comment nil))
+
 (defun zwilias/alternate-window ()
   "Switch back and forth between current and last window in the
 current frame."
