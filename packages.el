@@ -14,10 +14,7 @@
 (package! reformatter)
 (package! discover-my-major)
 (package! string-inflection)
-(package! envrc)
-(package! prettier-js)
-(package! platformio-mode)
-(package! ccls)
+;; (package! envrc)
 (package! xref :pin "a82f459b37b31546bf274388baf8aca79e9c30d9")
 (package! erlang :pin "f0cf38a32b957d956be4170e24ad72f8fca3e3f6")
 
